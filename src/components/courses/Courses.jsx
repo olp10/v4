@@ -39,7 +39,7 @@ export function Courses() {
             {state === 'empty' && (<p>engar deildir</p>)}
             {state === 'error' && (<p>villa við að sækja deildir</p>)}
             {state === 'loading' && (<p>Sæki deildir...</p>)}
-            <div class="tableContainer">
+            <div className="tableContainer">
               <table>
                 <tr>
                   <td>Númer</td>

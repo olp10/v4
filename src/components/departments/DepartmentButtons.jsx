@@ -5,7 +5,7 @@ export function DepartmentButtons( {slug} ) {
   console.log(slug);
   return (
     <div className="buttonContainer">
-      <button><NavLink to={`/departments/${slug}/courses`}>Sjá áfanga</NavLink></button>
+      <NavLink to={`/departments/${slug}/courses`}><button>Sjá áfanga</button></NavLink>
       <button>Eyða deild</button>
     </div>
   )
