@@ -1,0 +1,17 @@
+.newCourse {
+  margin: 0 2rem;
+}
+
+form {
+  padding: .5rem;
+}
+
+form input, select {
+  margin: .2rem 0;
+  height: 2rem;
+  padding: 5px;
+}
+
+form button {
+  margin-top: 1rem;
+}

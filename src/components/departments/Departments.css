@@ -1,0 +1,20 @@
+/* CSS for departments here */
+
+li { text-align: left;}
+
+.departments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.departmentList {
+  margin: 2rem;
+}
+
+.departmentList li {
+  margin: 6px;
+  list-style-type: none;
+}

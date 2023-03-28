@@ -1,0 +1,26 @@
+table td {
+  padding: 0 1rem;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+/* color odd line numbers */
+table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table {
+  /* add lines between cells */
+  border: 1px solid black;
+}
+
+.coursesList {
+  display: flex;
+  flex-direction: row;
+  padding: auto;
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem 0;
+}
