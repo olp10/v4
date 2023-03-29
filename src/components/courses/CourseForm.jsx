@@ -15,6 +15,8 @@ export function CourseForm() {
   const { slug } = useParams();
   const department = slug;
 
+  const URL = process.env.REACT_APP_API_URL;
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -53,7 +55,6 @@ export function CourseForm() {
 
   const onDegreeChange = (e) => {
     setDegree(e.target.value);
-    console.log(degree);
   }
 
   const onSemesterChange = (e) => {
@@ -72,15 +73,15 @@ export function CourseForm() {
         linkToSyllabus,
         department,
       }
-      console.log(body);
-      const response = await fetch(`https://vef2-2023-v3-production.up.railway.app/departments/${slug}/courses`, {
+
+      const response = await fetch(`${URL}/departments/${slug}/courses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(body),
       });
-      console.log(response);
+
       if (!response.ok) {
         if (response.status >= 400 && response.status < 500) {
           const responseJson = await response.json();
@@ -89,7 +90,6 @@ export function CourseForm() {
         }
       } else {
         // const json = await response.json();
-        console.log('Response', response);
         setState('success');
       }
     }
@@ -109,13 +109,13 @@ export function CourseForm() {
         <input type="text" name="number" id="number" placeholder="Númer áfanga" value={number} onChange={onNumberChange}></input>
         <input type="number" step=".5" name="credits" id="credits" placeholder="Fjöldi eininga" value={credits} onChange={onCreditsChange}></input>
         <select value={degree} onChange={onDegreeChange} onLoad={onDegreeChange}>
-          <option disabled="true">Námsstig</option>
+          <option disabled={true}>Námsstig</option>
           <option>Grunnnám</option>
           <option>Framhaldsnám</option>
           <option>Grunnnám / Framhaldsnám</option>
         </select>
         <select value={semester} onChange={onSemesterChange}>
-          <option disabled="true">Kennslumisseri</option>
+          <option disabled={true}>Kennslumisseri</option>
           <option>Vor</option>
           <option>Sumar</option>
           <option>Haust</option>

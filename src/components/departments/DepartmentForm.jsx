@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './DepartmentForm.css';
 
-const URL = 'https://vef2-2023-v3-production.up.railway.app/departments';
+const URL = process.env.REACT_APP_API_URL;
 
 export function DepartmentForm() {
   const [state, setState] = useState('empty');
@@ -16,14 +16,13 @@ export function DepartmentForm() {
         name,
         description,
       }
-      const response = await fetch(URL, {
+      const response = await fetch(`${URL}/departments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(body),
       });
-      console.log('Response', response);
       if (!response.ok) {
         if (response.status >= 400 && response.status < 500) {
           const responseJson = await response.json();
@@ -32,7 +31,6 @@ export function DepartmentForm() {
         }
       } else {
         // const json = await response.json();
-        console.log('Response', response);
         setState('data');
       }
     } catch (e) {

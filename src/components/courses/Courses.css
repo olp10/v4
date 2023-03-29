@@ -9,9 +9,8 @@ table tr:nth-child(odd) {
 }
 
 /* first child of table */
-table tr:first-child {
+thead {
   font-size: 1.2rem;
-  font-family: sans-serif;
   font-weight: bold;
 }
 

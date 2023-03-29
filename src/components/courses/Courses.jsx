@@ -8,6 +8,8 @@ export function Courses() {
   const [courses, setCourses] = useState([]);
   const { slug } = useParams();
 
+  const URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     async function fetchData() {
       await fetchCourses(slug);
@@ -18,12 +20,11 @@ export function Courses() {
   async function fetchCourses(departmentSlug) {
     setState('loading');
     try {
-      const response = await fetch(`https://vef2-2023-v3-production.up.railway.app/departments/${departmentSlug}/courses`);
+      const response = await fetch(`${URL}/departments/${departmentSlug}/courses`);
       if (!response.ok) {
         throw new Error('Something went wrong');
       }
       const json = await response.json();
-      console.log(json);
       setCourses(json);
       setState('data');
     } catch (e) {
@@ -43,14 +44,17 @@ export function Courses() {
             <div className="tableContainer">
             <h2>Áfangar í boði</h2>
               <table>
-                <tr>
-                  <td>Númer</td>
-                  <td>Heiti</td>
-                  <td>Einingar</td>
-                  <td>Kennslumisseri</td>
-                  <td>Námsstig</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <td>Númer</td>
+                    <td>Heiti</td>
+                    <td>Einingar</td>
+                    <td>Kennslumisseri</td>
+                    <td>Námsstig</td>
+                  </tr>
+                </thead>
 
+                <tbody>
                   {state === 'data' && courses.map((course, i) => {
                     return (
                       <tr key={course.id}>
@@ -62,6 +66,7 @@ export function Courses() {
                       </tr>
                     )
                   })}
+                </tbody>
               </table>
             </div>
               <CourseForm />

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import DepartmentForm from './DepartmentForm';
 import './Departments.css';
 
-const URL = 'https://vef2-2023-v3-production.up.railway.app/departments';
+const URL = process.env.REACT_APP_API_URL;
 
 export function Departments( { title }) {
     const [state, setState] = useState('empty');
@@ -19,7 +19,7 @@ export function Departments( { title }) {
     async function fetchDepartments() {
         setState('loading');
         try {
-            const response = await fetch(URL);
+            const response = await fetch(`${URL}/departments`);
             if(!response.ok) {
                 throw new Error('Something went wrong');
             }
@@ -40,9 +40,12 @@ export function Departments( { title }) {
               {state === 'loading' && (<p>Sæki deildir...</p>)}
               <div className="tableContainer">
                 <table>
-                  <tr>
-                    <td>Deild</td>
-                  </tr>
+                  <thead>
+                    <tr>
+                      <td>Deild</td>
+                    </tr>
+                  </thead>
+                  <tbody>
                   {(state === 'data') && departments.map((department, i) => {
                     return (
                       <tr key={department.id}>
@@ -51,7 +54,7 @@ export function Departments( { title }) {
                         </td>
                       </tr>
                     )
-                  })}
+                  })}</tbody>
                   </table>
               </div>
           <DepartmentForm />

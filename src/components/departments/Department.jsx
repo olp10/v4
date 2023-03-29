@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import './Department.css';
 import DepartmentButtons from "./DepartmentButtons";
 
-const URL = 'https://vef2-2023-v3-production.up.railway.app/departments/';
+const URL = process.env.REACT_APP_API_URL;
 
 export function Department() {
   const [state, setState] = useState('loading');
@@ -22,12 +22,11 @@ export function Department() {
     setState('loading');
     try {
 
-      const response = await fetch(URL + slugToFetch);
+      const response = await fetch(`${URL}/departments/${slugToFetch}`);
       if (!response.ok) {
         throw new Error('Something went wrong');
       }
       const json = await response.json();
-      console.log(json);
       setDepartment(json);
       setState('data');
     } catch (e) {
