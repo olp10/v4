@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './DepartmentForm.css';
 
-const URL = 'http://localhost:4000/departments';
+const URL = 'https://vef2-2023-v3-production.up.railway.app/departments';
 
 export function DepartmentForm() {
   const [state, setState] = useState('empty');

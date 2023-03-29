@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import DepartmentForm from './DepartmentForm';
 import './Departments.css';
 
-const URL = 'http://localhost:4000/departments';
+const URL = 'https://vef2-2023-v3-production.up.railway.app/departments';
 
 export function Departments( { title }) {
     const [state, setState] = useState('empty');

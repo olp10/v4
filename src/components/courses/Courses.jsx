@@ -18,7 +18,7 @@ export function Courses() {
   async function fetchCourses(departmentSlug) {
     setState('loading');
     try {
-      const response = await fetch(`http://localhost:4000/departments/${departmentSlug}/courses`);
+      const response = await fetch(`https://vef2-2023-v3-production.up.railway.app/departments/${departmentSlug}/courses`);
       if (!response.ok) {
         throw new Error('Something went wrong');
       }

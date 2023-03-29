@@ -73,7 +73,7 @@ export function CourseForm() {
         department,
       }
       console.log(body);
-      const response = await fetch(`http://localhost:4000/departments/${slug}/courses`, {
+      const response = await fetch(`https://vef2-2023-v3-production.up.railway.app/departments/${slug}/courses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

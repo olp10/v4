@@ -6,7 +6,7 @@ export function DepartmentButtons( {slug, state, setState} ) {
 
   async function deleteDepartment(slugToDelete) {
     try {
-      const response = await fetch(`http://localhost:4000/departments/${slugToDelete}`, {
+      const response = await fetch(`https://vef2-2023-v3-production.up.railway.app/departments/${slugToDelete}`, {
         method: 'DELETE'
       });
       if(!response.ok) {

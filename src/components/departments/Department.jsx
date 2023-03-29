@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import './Department.css';
 import DepartmentButtons from "./DepartmentButtons";
 
-const URL = 'http://localhost:4000/departments/';
+const URL = 'https://vef2-2023-v3-production.up.railway.app/departments/';
 
 export function Department() {
   const [state, setState] = useState('loading');
