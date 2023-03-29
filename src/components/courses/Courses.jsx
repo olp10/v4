@@ -15,7 +15,7 @@ export function Courses() {
       await fetchCourses(slug);
     }
     fetchData();
-  }, [slug]);
+  }, []);
 
   async function fetchCourses(departmentSlug) {
     setState('loading');
