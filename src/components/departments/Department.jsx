@@ -18,7 +18,6 @@ export function Department() {
   }, [slug]);
 
 
-
   async function fetchDepartment(slugToFetch) {
     setState('loading');
     try {
@@ -37,23 +36,29 @@ export function Department() {
     }
   }
 
-  if (state === 'error') {
-    return (
-      <p>Villa við að sækja deild</p>
-    )
-  }
-
-  if (state === 'loading') {
-    return (
-      <p>Sæki deild...</p>
-    )
-  }
-
-  console.log(slug);
   return (
-    <section>
-      <h2>{department.description}</h2>
-      <DepartmentButtons slug={slug}/>
+    <section className='departmentInfo'>
+      {state === 'data' && (
+        <>
+          <h2>{department.name}</h2>
+          <h3>{department.description}</h3>
+          <DepartmentButtons state={state} slug={slug} setState={setState} />
+        </>
+      )}
+      {state === 'empty' && (
+        <p>Engar deildir</p>
+      )}
+      {state === 'error' && (
+        <p>Villa við að sækja deildir</p>
+      )}
+      {state === 'loading' && (
+        <p>Sæki deildir...</p>
+      )}
+      {state === 'deleted' && (
+        <p>Deild eytt</p>
+      )}
+
+
     </section>
 
     /* TODO: Implementa update form fyrir deild

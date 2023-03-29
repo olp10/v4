@@ -2,19 +2,18 @@
 
 li { text-align: left;}
 
-.departments {
+.departmentList {
+  margin: auto;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 2rem;
+  justify-content: center;
 }
 
-.departmentList {
-  margin: 2rem;
+.tableContainer {
+  margin-top: .7rem;
+  min-height: 80vh;
 }
 
 .departmentList li {
   margin: 6px;
-  list-style-type: none;
 }

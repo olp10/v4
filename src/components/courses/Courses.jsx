@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router";
-import { NavLink } from 'react-router-dom';
 import { CourseForm } from './CourseForm';
 import './Courses.css';
 
@@ -14,7 +13,7 @@ export function Courses() {
       await fetchCourses(slug);
     }
     fetchData();
-  }, []);
+  }, [slug]);
 
   async function fetchCourses(departmentSlug) {
     setState('loading');
@@ -24,6 +23,7 @@ export function Courses() {
         throw new Error('Something went wrong');
       }
       const json = await response.json();
+      console.log(json);
       setCourses(json);
       setState('data');
     } catch (e) {
@@ -34,12 +34,14 @@ export function Courses() {
 
   return (
     <>
-        <h2>Áfangar í boði</h2>
+
         <section className="coursesList">
+
             {state === 'empty' && (<p>engar deildir</p>)}
             {state === 'error' && (<p>villa við að sækja deildir</p>)}
             {state === 'loading' && (<p>Sæki deildir...</p>)}
             <div className="tableContainer">
+            <h2>Áfangar í boði</h2>
               <table>
                 <tr>
                   <td>Númer</td>
@@ -48,6 +50,7 @@ export function Courses() {
                   <td>Kennslumisseri</td>
                   <td>Námsstig</td>
                 </tr>
+
                   {state === 'data' && courses.map((course, i) => {
                     return (
                       <tr key={course.id}>

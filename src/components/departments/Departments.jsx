@@ -31,27 +31,32 @@ export function Departments( { title }) {
             console.log(e);
         }
     }
-
     return (
       <>
-        <div className="departments">
           <section className="departmentList">
               <h2>{title}</h2>
               {state === 'empty' && (<p>engar deildir</p>)}
               {state === 'error' && (<p>villa við að sækja deildir</p>)}
               {state === 'loading' && (<p>Sæki deildir...</p>)}
-              <ul>
-                  {state === 'data' && departments.map((department, i) => {
+              <div className="tableContainer">
+                <table>
+                  <tr>
+                    <td>Deild</td>
+                  </tr>
+                  {(state === 'data') && departments.map((department, i) => {
                     return (
-                      <li key={department.slug}><NavLink to={`/departments/${department.slug}`}>{department.name}</NavLink></li>
+                      <tr key={department.id}>
+                        <td>
+                          <NavLink to={`/departments/${department.slug}`}>{department.name}</NavLink>
+                        </td>
+                      </tr>
                     )
                   })}
-              </ul>
-              <button onClick={() => fetchDepartments}>Sækja deildir</button>
+                  </table>
+              </div>
+          <DepartmentForm />
           </section>
 
-          <DepartmentForm />
-        </div>
       </>
     );
 }

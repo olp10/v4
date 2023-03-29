@@ -7,10 +7,10 @@ export function CourseForm() {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [semester, setSemester] = useState('');
-  const [degree, setDegree] = useState('');
+  const [semester, setSemester] = useState('Vor');
+  const [degree, setDegree] = useState('Grunnnám');
   const [credits, setCredits] = useState('');
-  const [linkToSyllabus, setLinkToSyllabus] = useState('');
+  const [linkToSyllabus] = useState('');
 
   const { slug } = useParams();
   const department = slug;
@@ -35,6 +35,7 @@ export function CourseForm() {
     if (name.length > 0 && credits.length > 0 && number.length > 0) {
       setState('success');
       createCourse(name, number, semester, degree, credits, linkToSyllabus, department);
+
     }
   }
 
@@ -97,13 +98,11 @@ export function CourseForm() {
       setState('error');
       console.log('response:', e);
      }
-
   }
-
 
   return (
     <>
-    <div>
+    <div className='formContainer'>
       <legend>Bæta við áfanga</legend>
       <form onSubmit={onSubmitHandler} className="newCourse">
         <input type="text" name="name" id="name" placeholder='Heiti' value={name} onChange={onNameChange}></input>

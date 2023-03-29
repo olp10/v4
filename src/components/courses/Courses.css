@@ -1,7 +1,6 @@
 table td {
-  padding: 0 1rem;
+  padding: .3rem 1rem;
   border: 1px solid #ddd;
-  border-collapse: collapse;
 }
 
 /* color odd line numbers */
@@ -9,18 +8,37 @@ table tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
+/* first child of table */
+table tr:first-child {
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+main {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+section {
+  margin: auto;
+  margin-top: 2rem;
+}
+
 table {
   /* add lines between cells */
   border: 1px solid black;
+  border-collapse: collapse;
 }
 
 .coursesList {
+  margin-bottom: 0;
   display: flex;
   flex-direction: row;
-  padding: auto;
+  padding: 0 auto;
 }
 
 h2 {
+  margin-bottom: 1rem;
   text-align: center;
-  margin: 1rem 0;
 }

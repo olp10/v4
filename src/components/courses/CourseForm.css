@@ -6,6 +6,10 @@ form {
   padding: .5rem;
 }
 
+.formContainer {
+  margin-top: 1rem;
+}
+
 form input, select {
   margin: .2rem 0;
   height: 2rem;
@@ -18,15 +22,18 @@ form button {
 
 .states ul {
   text-align: center;
-  width: 70%;
   margin: auto;
 }
 
 .states h4 {
   margin-bottom: 2rem;
+  text-align: left;
 }
 
 .states p {
   text-align: left;
-  margin-left: 2.5rem;
+}
+
+.formContainer .states {
+  margin-left: 3rem;
 }

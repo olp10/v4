@@ -33,7 +33,7 @@ export function DepartmentForm() {
       } else {
         // const json = await response.json();
         console.log('Response', response);
-        setState('success');
+        setState('data');
       }
     } catch (e) {
       setState('error');
@@ -43,19 +43,19 @@ export function DepartmentForm() {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    name.length <= 0 ? setErrors(['Nafn má ekki vera tómt']) : setErrors([]);
-    description.length <= 0 ? setErrors(['Lýsing má ekki vera tóm']) : setErrors([]);
+    setErrors([]);
 
+    if (name.length <= 0) {
+      setState('error');
+      setErrors(errors => [...errors, 'Nafn má ekki vera tómt']);
+    }
+    if (description.length <= 0) {
+      setState('error');
+      setErrors(errors => [...errors, 'Lýsing má ekki vera tóm']);
+    }
     if (name.length > 0 && description.length > 0) {
-      setState('success');
+      setState('data');
       createDepartment(name, description);
-    } else if (name.length <= 0) {
-      setState('error');
-      setErrors(['Nafn má ekki vera tómt']);
-      console.log(errors);
-    } else if (description.length <= 0) {
-      setState('error');
-      setErrors(['Lýsing má ekki vera tóm']);
     }
   }
 
@@ -82,7 +82,7 @@ export function DepartmentForm() {
       <div className="states">
       {state === 'error' && (
         <>
-          <p>villa við að búa til deild</p>
+          <h4>Villa við að búa til deild</h4>
           <p>Villur:</p>
           <ul>
             {errors.map((error, i) => {
@@ -94,7 +94,7 @@ export function DepartmentForm() {
       </div>
 
       {state === 'loading' && (<p>Bý til deild...</p>)}
-      {state === 'success' && (<p>Bjó til deild</p>)}
+      {state === 'data' && (<p>Bjó til deild</p>)}
     </div>
     </>
   )
