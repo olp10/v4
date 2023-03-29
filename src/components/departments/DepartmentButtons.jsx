@@ -13,7 +13,6 @@ export function DepartmentButtons( {slug, state, setState} ) {
       if(!response.ok) {
         throw new Error('Something went wrong');
       }
-      const json = await response.json();
     } catch (e) {
       console.log(e);
     }
